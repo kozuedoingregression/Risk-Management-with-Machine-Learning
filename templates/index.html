@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Credit Risk Prediction</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 50px;
+        }
+        h1 {
+            text-align: center;
+        }
+        form {
+            width: 300px;
+            margin: 0 auto;
+        }
+        label {
+            font-size: 16px;
+            margin: 5px 0;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0 10px;
+            border: 1px solid #ccc;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #218838;
+        }
+        .result {
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Credit Risk Prediction</h1>
+    
+    <form action="/predict" method="POST">
+        <label for="age">Age:</label>
+        <input type="text" name="age" placeholder="Enter Age" required><br>
+
+        <label for="credit_amount">Credit Amount:</label>
+        <input type="text" name="credit_amount" placeholder="Enter Credit Amount" required><br>
+
+        <label for="sex">Sex (0 = Male, 1 = Female):</label>
+        <input type="text" name="sex" placeholder="Enter 0 for Male, 1 for Female" required><br>
+
+        <label for="housing">Housing (0 = Own, 1 = For free, 2 = Rent):</label>
+        <input type="text" name="housing" placeholder="Enter Housing type" required><br>
+
+        <label for="saving_accounts">Saving Accounts (0 = unknown, 1 = less than 100, 2 = 100 - 500, 3 = more than 500):</label>
+        <input type="text" name="saving_accounts" placeholder="Enter Saving Accounts" required><br>
+
+        <label for="checking_account">Checking Account (0 = unknown, 1 = less than 0, 2 = 0 - 200, 3 = more than 200):</label>
+        <input type="text" name="checking_account" placeholder="Enter Checking Account" required><br>
+
+        <label for="purpose">Purpose (0 = New car, 1 = Used car, 2 = Furniture/equipment, 3 = Radio/tv, 4 = Domestic appliance, 5 = Repayment, 6 = Education, 7 = Business, 8 = Others):</label>
+        <input type="text" name="purpose" placeholder="Enter Purpose" required><br>
+
+        <input type="submit" value="Predict">
+    </form>
+
+    {% if prediction_text %}
+    <div class="result">
+        <h2>Prediction: {{ prediction_text }}</h2>
+    </div>
+    {% endif %}
+</body>
+</html>
