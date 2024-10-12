@@ -32,11 +32,14 @@ def predict():
     
     # Make prediction
     prediction = model.predict(input_features)
-    
+
+    # Determine the prediction result
+    prediction_result = "High Credit Risk" if prediction[0] else "Low Credit Risk"
+
     # Generate and save heatmap
     create_heatmap(prediction)
 
-    return jsonify({'prediction': int(prediction[0])})
+    return jsonify({'prediction': int(prediction[0]), 'result': prediction_result})
 
 def create_heatmap(prediction):
     # Dummy data for heatmap (you can modify this based on your dataset)

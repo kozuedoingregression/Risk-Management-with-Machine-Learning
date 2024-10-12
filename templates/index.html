@@ -62,6 +62,18 @@
             border-radius: 4px;
             margin-top: 20px;
         }
+        footer {
+            margin-top: 40px;
+            text-align: center;
+            font-size: 14px;
+        }
+        footer a {
+            color: #007bff;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -122,7 +134,7 @@
                 body: formData
             });
             const result = await response.json();
-            document.getElementById('result').innerText = 'Prediction: ' + result.prediction;
+            document.getElementById('result').innerText = 'Prediction: ' + result.prediction + ' (' + (result.prediction === 1 ? 'High Credit Risk' : 'Low Credit Risk') + ')';
             document.getElementById('heatmap').src = 'static/heatmap.png';  // Update heatmap image source
             document.getElementById('heatmap').style.display = 'block';  // Show the heatmap
         };
